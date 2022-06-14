@@ -14,17 +14,14 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(this);
     this.catchUser();
   }
 
   catchUser = async () => {
-    // console.log('catchuser');
     this.setState({
       loading: true,
     });
     const userName = await getUser();
-    // console.log(userName); // retorna um objeto, objetivo: pegar o name desse objeto (na linha 39, dentro do h2).
     this.setState({
       loading: false,
       user: userName,

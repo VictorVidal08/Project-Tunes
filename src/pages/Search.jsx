@@ -8,13 +8,12 @@ import searchAlbumsAPI from '../services/searchAlbumsAPI';
 class Search extends React.Component {
   constructor() {
     super();
-    // console.log(this);
     this.state = {
       buttonDisabled: true,
       searchText: '',
       loading: false,
       albuns: '',
-      artist: '', // necessário somente para exibir o nome
+      artist: '',
     };
   }
 
@@ -31,7 +30,6 @@ class Search extends React.Component {
         this.setState({ buttonDisabled: true });
       }
     });
-    // console.log(value);
   }
 
   handleButtonSearch = async () => {
@@ -40,15 +38,12 @@ class Search extends React.Component {
       loading: true,
       artist: searchText,
     });
-    // chama a função
     const album = await searchAlbumsAPI(searchText);
-    // console.log(album);
     this.setState({
       loading: false,
       albuns: album,
       searchText: '',
     });
-    // console.log(this.state);
   }
 
   render() {
@@ -57,7 +52,7 @@ class Search extends React.Component {
       <div data-testid="page-search">
         Search
         <Header />
-        { loading ? (<Loading />) : ( // necessário para somente exibir o form caso loading true.
+        { loading ? (<Loading />) : (
           <form>
             <input
               type="text"
@@ -81,9 +76,8 @@ class Search extends React.Component {
         <h2>{ `Resultado de álbuns de: ${artist}` }</h2>
 
         {albuns.length > 0
-          ? (albuns.map((album, index) => ( // index por causa de lint
+          ? (albuns.map((album, index) => (
             <div key={ index }>
-              {/* {console.log(album.artistName)} */}
               <img
                 src={ album.artworkUrl100 }
                 alt={ album.artistNameartistName }
@@ -97,7 +91,7 @@ class Search extends React.Component {
                 { `${album.artistName}` }
               </p>
               <Link
-                to={ `/album/${album.collectionId}` } // pega o id e coloca no fim da url
+                to={ `/album/${album.collectionId}` }
                 data-testid={ `link-to-album-${album.collectionId}` }
               >
                 See more info about album

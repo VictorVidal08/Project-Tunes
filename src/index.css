@@ -23,6 +23,13 @@ code {
     monospace;
 }
 
+input {
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px 10px;
+  width: 50%;
+}
+
 .loading {
   align-items: center;
   display: flex;

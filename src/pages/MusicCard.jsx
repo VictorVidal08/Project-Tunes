@@ -24,11 +24,10 @@ class MusicCard extends React.Component {
   }
 
   handleClick = ({ target }) => {
-    // console.log(target.checked);
     this.setState({
       loading: true,
       isFavorite: target.checked,
-    }, async () => { // setState é assincrona, tem que usar uma callback;
+    }, async () => {
       const { isFavorite } = this.state;
       console.log(isFavorite);
       const { song } = this.props;
@@ -38,7 +37,6 @@ class MusicCard extends React.Component {
           loading: false,
         });
       } else if (isFavorite === false) {
-        // console.log('false');
         await removeSong(song);
         this.setState({
           loading: false,
@@ -53,7 +51,6 @@ class MusicCard extends React.Component {
     return (
 
       <div>
-        {/* {console.log(this.props)} */}
         { loading ? (<Loading />) : (
           <section>
             <h4>{ trackName }</h4>
