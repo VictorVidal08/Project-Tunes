@@ -1,0 +1,34 @@
+.search-form {
+  display: flex;
+  justify-content: center;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+}
+
+h3 {
+  display: flex;
+  justify-content: center;
+}
+
+.album-class {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 390px;
+  width: 370px;
+  background-color: black;
+  border: 1px solid aquamarine;
+  border-radius: 45px;
+}
+
+.results-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}

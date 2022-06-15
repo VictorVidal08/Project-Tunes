@@ -1,0 +1,20 @@
+.musicCard-mother {
+  display: flex;
+  justify-content: center;
+}
+
+.musicCard-class {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: black;
+  border: 1px solid aquamarine;
+  border-radius: 45px;
+}
+
+.label {
+  display: flex;
+  width: 250px;
+  margin-left: 60px;
+}

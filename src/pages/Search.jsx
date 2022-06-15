@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Header from '../components/Header';
 import Loading from './Loading';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
-
-// lógica de código inspirada no componente Login.
+import '../search.css';
 class Search extends React.Component {
   constructor() {
     super();
@@ -50,18 +49,20 @@ class Search extends React.Component {
     const { buttonDisabled, searchText, loading, artist, albuns } = this.state;
     return (
       <div data-testid="page-search">
-        Search
         <Header />
         { loading ? (<Loading />) : (
-          <form>
-            <input
-              type="text"
-              name="searchText"
-              onChange={ this.handleSearchChange }
-              data-testid="search-artist-input"
-              value={ searchText }
-            />
-
+          <form className="search-form">
+            <label>
+             Search an Artist:
+              <input
+                type="text"
+                name="searchText"
+                onChange={ this.handleSearchChange }
+                data-testid="search-artist-input"
+                value={ searchText }
+              />
+            </label>
+            
             <button
               type="button"
               data-testid="search-artist-button"
@@ -73,32 +74,34 @@ class Search extends React.Component {
           </form>
         )}
 
-        <h2>{ `Resultado de álbuns de: ${artist}` }</h2>
-
-        {albuns.length > 0
-          ? (albuns.map((album, index) => (
-            <div key={ index }>
-              <img
-                src={ album.artworkUrl100 }
-                alt={ album.artistNameartistName }
-              />
-              <p>
-                Album:
-                { `${album.collectionName}` }
-              </p>
-              <p>
-                Artist:
-                { `${album.artistName}` }
-              </p>
-              <Link
-                to={ `/album/${album.collectionId}` }
-                data-testid={ `link-to-album-${album.collectionId}` }
-              >
-                See more info about album
-              </Link>
-            </div>
-          )))
-          : <h3>Nenhum álbum foi encontrado</h3>}
+        <h2>{ `Albuns results of: ${artist}` }</h2>
+          
+        <div className="results-content">
+          {albuns.length > 0
+            ? (albuns.map((album, index) => (
+              <div key={ index } className="album-class">
+                <img
+                  src={ album.artworkUrl100 }
+                  alt={ album.artistNameartistName }
+                />
+                <p>
+                  Album:
+                  { `${album.collectionName}` }
+                </p>
+                <p>
+                  Artist:
+                  { `${album.artistName}` }
+                </p>
+                <Link
+                  to={ `/album/${album.collectionId}` }
+                  data-testid={ `link-to-album-${album.collectionId}` }
+                >
+                  See more info about album
+                </Link>
+              </div>
+            )))
+            : <h3>No album was found, please search another artist.</h3>}
+        </div>        
       </div>
     );
   }

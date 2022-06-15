@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from './MusicCard';
 import Loading from './Loading';
+import '../album.css';
 class Album extends React.Component {
   constructor() {
     super();
@@ -39,11 +40,12 @@ class Album extends React.Component {
      const { artist, album, musics, loading } = this.state;
      return (
        <div data-testid="page-album">
-         Album
          <Header />
          { loading && (<Loading />)}
-         <h2 data-testid="album-name">{ album }</h2>
-         <h3 data-testid="artist-name">{ artist }</h3>
+         <div className="albuns-class">
+            <h2 data-testid="album-name">{ album }</h2>
+            <h3 data-testid="artist-name">{ artist }</h3>
+         
          { musics.map((song, index) => (
            <MusicCard
              key={ index }
@@ -53,6 +55,7 @@ class Album extends React.Component {
              song={ song }
            />
          ))}
+       </div>
        </div>
      );
    }

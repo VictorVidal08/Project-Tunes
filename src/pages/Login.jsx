@@ -47,31 +47,35 @@ class Login extends React.Component {
   render() {
     const { disabled, loginName, redirect, loading } = this.state;
     return (
-      <div data-testid="page-login" className="main-div">
-          <form className="formClass">
-            <h1>Login</h1>
-            <input
-              data-testid="login-name-input"
-              type="text"
-              name="loginName"
-              value={ loginName }
-              onChange={ this.handleChange }
-              placeholder="nome do usuário"
-            />
-            <button
-              data-testid="login-submit-button"
-              type="button"
-              disabled={ disabled }
-              onClick={ this.handleButton }
-            >
-              Entrar
-            </button>
+      <div>
+        <h1 className="title">TrybeTunes</h1>
+          <div data-testid="page-login" className="main-div">
+            <form className="formClass">
+              <h1 className="login-name">Login</h1>
+              <input
+                data-testid="login-name-input"
+                type="text"
+                name="loginName"
+                value={ loginName }
+                onChange={ this.handleChange }
+                placeholder="Username"
+              />
+              <button
+                data-testid="login-submit-button"
+                type="button"
+                disabled={ disabled }
+                onClick={ this.handleButton }
+              >
+                Log in
+              </button>
 
-            {loading && <Loading />}
-            {redirect && <Redirect to="/search" />}
+              {loading && <Loading />}
+              {redirect && <Redirect to="/search" />}
 
-          </form>
-        </div>
+            </form>
+          </div>
+      </div>
+      
     );
   }
 }
