@@ -61,6 +61,7 @@ class Login extends React.Component {
                 placeholder="Username"
               />
               <button
+                className="loginBtn"
                 data-testid="login-submit-button"
                 type="button"
                 disabled={ disabled }

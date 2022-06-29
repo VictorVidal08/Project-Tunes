@@ -69,7 +69,7 @@ class Search extends React.Component {
               disabled={ buttonDisabled }
               onClick={ this.handleButtonSearch }
             >
-              Pesquisar
+              Search
             </button>
           </form>
         )}
